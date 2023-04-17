@@ -1,42 +1,34 @@
-import { Component } from "react";
+import { useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { toast } from 'react-toastify';
 
-export default class PokemonForm extends Component {
-    state = {
-        pokemonName: '',
-    };
+export default function PokemonForm({ onSubmit }) {
 
-    handleSubmit = e => {
+    const [pokemonName, setPokemonName] = useState('');
+
+    const handleSubmit = e => {
         e.preventDefault();
         
-        if(!this.state.pokemonName.trim()) {
+        if(!pokemonName.trim()) {
             toast.error('You need to enter the name of the pokemon!')
             return;
         }
-        this.props.onSubmit(this.state.pokemonName);
-        this.setState({
-            pokemonName: '',
-        })
+        onSubmit(pokemonName);
+        setPokemonName('');
     };
 
-    handleNameChange = e => 
-    this.setState({
-        pokemonName: e.currentTarget.value,
-    });
-
-    render() {
-        const { pokemonName } = this.state;
-        const normalizedpokemonName = pokemonName.toLowerCase().trim();
+    const handleNameChange = e => setPokemonName(e.currentTarget.value.toLowerCase());
 
         return (
-            <form onSubmit={this.handleSubmit} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <form 
+                onSubmit={handleSubmit} 
+                style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <label>Enter pokemon name:
                     <input 
                     type="text"
                     name="pokemonName" 
-                    value={normalizedpokemonName} 
-                    onChange={this.handleNameChange}
+                    value={pokemonName} 
+                    onChange={handleNameChange}
                     style={{ padding: 8 }} />
                 </label>
                 <button type="submit" style={{ border: "none", backgroundColor: "#fff" }}>
@@ -44,5 +36,4 @@ export default class PokemonForm extends Component {
                 </button>
             </form>
         );
-    };
 };

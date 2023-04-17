@@ -36,6 +36,7 @@ const handleChange = e => {
 
     return (
         <form autoComplete="off">
+            <h2>SignupForm</h2>
             <label>
                 <span>Email</span>
                 <input 

@@ -22,6 +22,7 @@ export default function Clock() {
 
         return (
             <div>
+                <h2>Clock</h2>
                 <p>Current time: {time.toLocaleTimeString()}</p>
                 <button 
                     type="button"
