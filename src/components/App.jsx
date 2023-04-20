@@ -9,6 +9,8 @@ import Clock from "./Clock";
 import PokemonView from "./PokemonView";
 import CounterWithUseReducer from "./CounterWithUseReducer/CounterWithUseReducer";
 import Friends from "./Friends/Friends";
+import UserMenu from "./Context/UserMenu";
+import { DogView } from "./DogAri/DogView";
 
 export const App = () => {
   return (
@@ -20,6 +22,8 @@ export const App = () => {
       <PokemonView />
       <CounterWithUseReducer />
       <Friends />
+      <UserMenu />
+      <DogView />
       <GlobalStyle />
     </Layout>
   );
